@@ -5,10 +5,10 @@ This application is used to track multiple goals in an easy-to-manage format. Th
 ## Features
 
 - **Three-level system** : It is in a three-hierarchy level (goal, success step, and Task) system, which helps in easily dividing the Goal into small, easy-to-accomplish tasks.
-- **Delay tracking** : can track each task, success step, and goal delay to see the exact delay and help in finding out the root cause of the delay.
-- **Grouping Related Goals** : You Can group related goals with the Parent goal to effectively see the heirarchy of short- and long-term goals.
-- **Automation** : There is advanced business logic running behind the scenes to roll up all the necessary details from the grandchild to the parent. This will help you see up-to-date data.
-
+- **Delay tracking** : can track each task, success step, and goal's expected and actual duration to see the exact delay and help in finding out the root cause of that delay.
+- **Grouping Related Goals** : can group related goals with the Parent goal to effectively see the heirarchy of short- and long-term goals.
+- **Automation** : There is advanced business logic running behind the scenes to roll up all the necessary details from the child to the grandparent. This will help you see up-to-date data.
+  
 ## Screenshots
 
 ![Goal Record Page](/App-image/Goal_object_Image.png)
