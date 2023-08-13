@@ -1,18 +1,21 @@
-# Salesforce DX Project: Next Steps
+# Goal Management
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This application is used to track multiple goals in an easy-to-manage format. This application helps with goal tracking, the number of steps in a particular goal, the number of tasks, which tasks are in delay, and much more. It helps to see the exact number to understand where we are towards achieving our goal.
 
-## How Do You Plan to Deploy Your Changes?
+## Features
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+- **Three-level system** : It is in a three-hierarchy level (goal, success step, and Task) system, which helps in easily dividing the Goal into small, easy-to-accomplish tasks.
+- **Delay tracking** : can track each task, success step, and goal delay to see the exact delay and help in finding out the root cause of the delay.
+- **Grouping Related Goals** : You Can group related goals with the Parent goal to effectively see the heirarchy of short- and long-term goals.
+- **Automation** : There is advanced business logic running behind the scenes to roll up all the necessary details from the grandchild to the parent. This will help you see up-to-date data.
 
-## Configure Your Salesforce DX Project
+## Screenshots
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+![Goal Record Page](/App-image/Goal_object_Image.png)
 
-## Read All About It
+![Success Step Record Page](/App-image/Success_step_object_Image.png)
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+![Task Record Page](/App-image/Task_object_Image.png)
+
+## Note
+This Application is in continuous improvement, and new features and improvements are made slowly.
