@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GoalMgm_Exp_Start_Dt_Le_Exp_End_Dt</fullName>
+    <active>true</active>
+    <errorConditionFormula>Expected_End_Time__c &lt;= Expected_Start_Time__c</errorConditionFormula>
+    <errorMessage>The Expected Start Time must be less than Expected End Time.</errorMessage>
+</ValidationRule>

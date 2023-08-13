@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Check_Actual_End_Date_Value</name>
+        <label>Check Actual End Date Value</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>AED_Not_Blank_And_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Actual_End_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Actual_End_Date__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Total_Time_Delayed_Field_When_Ast_Not_Blank</targetReference>
+            </connector>
+            <label>AED Not Blank And Changed</label>
+        </rules>
+        <rules>
+            <name>AED_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Actual_End_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Total_Time_Delayed_Field</targetReference>
+            </connector>
+            <label>AED Blank</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>for_cal_elapsed_time_ablank</name>
+        <dataType>String</dataType>
+        <expression>IF ( (NOW() - DATETIMEVALUE({!$Record.Expected_End_Date__c}) - 0.7705) &gt; 0, 
+      TEXT(
+          FLOOR(
+                (NOW() -  DATETIMEVALUE({!$Record.Expected_End_Date__c} )) - 0.771
+          )
+       ) &amp; &quot; DAYS &quot; 
+     &amp;
+     TEXT(
+          FLOOR(
+                MOD(
+                       ((NOW() - DATETIMEVALUE( {!$Record.Expected_End_Date__c})) - 0.771)*24, 24
+                )
+          )
+     ) &amp; &quot; HOURS &quot;
+     &amp; 
+     TEXT(
+           FLOOR(
+                 MOD(
+                       ((NOW() - DATETIMEVALUE(  {!$Record.Expected_End_Date__c} )) - 0.771)*24 * 60, 60
+                 )
+           )
+     ) &amp; &quot; MINS &quot; ,
+    /* ELSE */
+&quot;0 DAYS 0 HOURS 0 MINS&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>for_create_delayed_time</name>
+        <dataType>String</dataType>
+        <expression>IF( {!$Record.Actual_End_Date__c} &gt;  {!$Record.Expected_End_Date__c}, 
+TEXT({!$Record.Actual_End_Date__c} - {!$Record.Expected_End_Date__c} - 1) &amp; &apos; DAYS &apos; &amp; {!for_current_hour_and_time},
+&quot;0 DAYS 0 HOURS 0 MINS&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>for_current_hour_and_time</name>
+        <dataType>String</dataType>
+        <expression>MID( TEXT(  NOW() + 0.229 ), 12, 2 ) &amp; &apos; HOURS &apos; &amp; MID( TEXT( NOW() + 0.229 ), 15, 2 ) &amp; &apos; MINS &apos;</expression>
+    </formulas>
+    <interviewLabel>Record Trigger - Success_Step__c - Before Trigger {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Record Trigger - Success_Step__c - Before Trigger</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Total_Time_Delayed_Field</name>
+        <label>Update Total Time Delayed Field</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>Total_Time_Delayed__c</field>
+            <value>
+                <elementReference>for_cal_elapsed_time_ablank</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Total_Time_Delayed_Field_When_Ast_Not_Blank</name>
+        <label>Update Total Time Delayed Field When Ast Not Blank</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>Total_Time_Delayed__c</field>
+            <value>
+                <elementReference>for_create_delayed_time</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Actual_End_Date_Value</targetReference>
+        </connector>
+        <object>Success_Steps__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

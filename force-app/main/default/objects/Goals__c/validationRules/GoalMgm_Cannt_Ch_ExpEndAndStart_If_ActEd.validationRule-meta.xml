@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GoalMgm_Cannt_Ch_ExpEndAndStart_If_ActEd</fullName>
+    <active>true</active>
+    <description>Cannot change expected end date and start date if actual end date field have value.</description>
+    <errorConditionFormula>AND( NOT(ISBLANK(Actual_End_Date__c)) , OR(ISCHANGED( Expected_End_Date__c ), ISCHANGED(Expected_Start_Date__c)))</errorConditionFormula>
+    <errorMessage>You can&apos;t change expected start or end date if Actual end date has a value. To change Actual end date, please reopen some task or add new task.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GoalMgm_If_AET_Th_EET_ESt_cant_chg</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND (
+     NOT(ISBLANK(Actual_End_Time__c)),
+     OR (ISCHANGED(Expected_End_Time__c),
+     ISCHANGED(Expected_Start_Time__c))
+ )</errorConditionFormula>
+    <errorMessage>You can&apos;t change Expected End Time and expected start date when Actual End Time is on the record. To change, change the status other than completed.</errorMessage>
+</ValidationRule>

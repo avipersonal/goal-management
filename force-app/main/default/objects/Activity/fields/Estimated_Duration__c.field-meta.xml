@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Duration__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( NOT(ISBLANK(Expected_End_Time__c)) &amp;&amp; NOT(ISBLANK(Expected_Start_Time__c)), 
+TEXT(
+    FLOOR( 
+         Expected_End_Time__c - Expected_Start_Time__c
+    )
+) &amp; &quot; DAYS &quot; &amp;
+TEXT(
+    FLOOR(
+         ((Expected_End_Time__c - Expected_Start_Time__c) -
+          FLOOR(Expected_End_Time__c - Expected_Start_Time__c)
+          )*24
+    )
+) &amp; &quot; HOURS &quot; &amp;
+TEXT (
+    FLOOR(
+             (
+                  (
+                     (Expected_End_Time__c - Expected_Start_Time__c) -
+                     FLOOR(Expected_End_Time__c - Expected_Start_Time__c)
+                   ) * 24
+                   -
+                   FLOOR(
+                             (
+                                 (Expected_End_Time__c - Expected_Start_Time__c) -
+                                 FLOOR(Expected_End_Time__c - Expected_Start_Time__c)
+                              ) * 24
+                   )
+               ) * 60
+   )
+) &amp; &quot; MINS &quot;,
+/* ELSE */
+&quot;&quot;
+)</formula>
+    <label>Estimated Duration</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

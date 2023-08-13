@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>TaskTriggerHandler</members>
+		<members>TriggerHandler</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>Activity.Actual_Duration__c</members>
+		<members>Activity.Actual_End_Time__c</members>
+		<members>Activity.Actual_Start_Time__c</members>
+		<members>Activity.Current_Update__c</members>
+		<members>Activity.Description__c</members>
+		<members>Activity.Estimated_Duration__c</members>
+		<members>Activity.Expected_End_Time__c</members>
+		<members>Activity.Expected_Start_Time__c</members>
+		<members>Activity.Is_Delayed__c</members>
+		<members>Activity.Success_Step__c</members>
+		<members>Activity.Task_Name__c</members>
+		<members>Activity.Time_Delayed__c</members>
+		<name>CustomField</name>
+	</types>
+	<types>
+		<members>Goals__c</members>
+		<members>Success_Steps__c</members>
+		<name>CustomTab</name>
+	</types>
+	<types>
+		<members>Task-GoalMgm_Goal - Success - Task Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
+		<members>Goal_Management_User</members>
+		<name>PermissionSet</name>
+	</types>
+	<types>
+		<members>Goal Management Profile</members>
+		<name>Profile</name>
+	</types>
+	<types>
+		<members>Success_Steps__c.Create_Success_Task</members>
+		<name>QuickAction</name>
+	</types>
+	<types>
+		<members>Goals__c.GoalMgm_Cannt_Ch_ExpEndAndStart_If_ActEd</members>
+		<members>Goals__c.GoalMgm_Exp_Start_Dt_NotGr_Exp_End_Dt</members>
+		<members>Success_Steps__c.GoalMgm_Cannt_Ch_ExpEndAndStart_If_ActEd</members>
+		<members>Success_Steps__c.GoalMgm_Exp_Start_Dt_NotGr_Exp_End_Dt</members>
+		<members>Task.GoalMgm_Exp_Start_Dt_Le_Exp_End_Dt</members>
+		<members>Task.GoalMgm_If_AET_Th_EET_ESt_cant_chg</members>
+		<name>ValidationRule</name>
+	</types>
+	<version>55.0</version>
+</Package>
